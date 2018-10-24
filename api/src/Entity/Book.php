@@ -9,6 +9,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
 
 /**
  * @ApiResource(
@@ -24,6 +25,10 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  * @ApiFilter(
  *     SearchFilter::class, properties={"title"="partial"}
  * )
+ * @ApiFilter(
+ *     PropertyFilter::class
+ * )
+ * with GraphQL it queries everthing you want
  */
 class Book
 {
