@@ -5,9 +5,13 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource
+ * @ApiResource(
+ *     normalizationContext={"groups"={"Author:write"}},
+ *     denormalizationContext={"groups"={"Author:read"}},
+ * )
  * @ORM\Entity
  */
 class Author
@@ -23,6 +27,7 @@ class Author
      * @var string
      * @ORM\Column
      * @ApiProperty(iri="http://schema.org/name")
+     * @Groups({"Book:read", "Book:write"})
      */
     private $name;
 
