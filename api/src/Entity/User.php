@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -14,6 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     denormalizationContext={"groups"={"User:read"}}
  * )
  * @ORM\Entity
+ * @ORM\Table(name="fos_user")
  */
 class User extends BaseUser
 {
@@ -27,14 +29,11 @@ class User extends BaseUser
      * @ORM\Column(type="integer")
      */
     protected $id;
-
-
-    /**
-     * @var string
-     * @ORM\Column(type="integer")
-     * @Groups({"User:read", "User:write"})
-     */
-    protected $plainPassword;
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
 
     /**
      * @return int
@@ -52,20 +51,5 @@ class User extends BaseUser
         $this->id = $id;
     }
 
-    /**
-     * @return string
-     */
-    public function getPlainPassword(): string
-    {
-        return $this->plainPassword;
-    }
-
-    /**
-     * @param string $plainPassword
-     */
-    public function setPlainPassword($plainPassword)
-    {
-        $this->plainPassword = $plainPassword;
-    }
 
 }
