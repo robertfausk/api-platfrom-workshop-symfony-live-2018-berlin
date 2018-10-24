@@ -17,7 +17,7 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  *     denormalizationContext={"groups"={"Book:read"}},
  *     collectionOperations={"get", "post"},
  *     itemOperations={
- *          "get"="{"path"="/myBooks/{id}"}",
+ *          "get"={"path"="/myBooks/{id}"},
  *          "put"
  *     },
  *     attributes={
