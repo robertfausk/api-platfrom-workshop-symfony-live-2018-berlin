@@ -3,15 +3,25 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource
+ * @ORM\Entity
  */
 class Author
 {
-    /** @var int */
+    /**
+     * @var int
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO") encourage to use Uuid but postgres not yet configured for this
+     * @ORM\Column(type="integer")
+     */
     private $id;
-    /** @var string */
+    /**
+     * @var string
+     * @ORM\Column
+     */
     private $name;
 
     /**

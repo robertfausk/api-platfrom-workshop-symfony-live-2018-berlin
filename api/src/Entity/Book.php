@@ -5,18 +5,20 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"Book:write"}},
  *     denormalizationContext={"groups"={"Book:read"}},
- *  collectionOperations={"get", "post"},
+ *     collectionOperations={"get", "post"},
  *     itemOperations={
  *          "get",
  *          "put"
  *     }
  * )
+ * @ORM\Entity
  */
 class Book
 {
@@ -25,17 +27,29 @@ class Book
      * @ApiProperty(identifier=true) cause we are not working with Doctrine otherwise issue 'Unable to generate an IRI for the item of type
      *                               \"App\\Entity\\Book\"'
      * @Groups({"Book:read", "Book:write"})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO") encourage to use Uuid but postgres not yet configured for this
+     * @ORM\Column(type="integer")
      */
     private $id;
-    /** @var string
-     * @Groups({"Book:read", "Book:write"})*/
+    /**
+     * @var string
+     * @Groups({"Book:read", "Book:write"})
+     * @ORM\Column
+     */
     private $title;
-    /** @var string
-     * @Groups({"Book:read", "Book:write"})*/
+    /**
+     * @var string
+     * @Groups({"Book:read", "Book:write"})
+     * @ORM\Column
+     */
     private $description;
 
-    /** @var Author
-     * @Groups({"Book:read", "Book:write"})*/
+    /**
+     * @var Author
+     * @Groups({"Book:read", "Book:write"})
+     * @ORM\OneToOne(targetEntity=Author::class)
+     */
     private $author;
 
     /**
