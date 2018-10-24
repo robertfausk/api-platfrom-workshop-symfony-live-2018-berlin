@@ -34,6 +34,7 @@ class BookDataProvider implements CollectionDataProviderInterface, RestrictedDat
 
     public function supports(string $resourceClass, string $operationName = null, array $context = []): bool
     {
-        return $resourceClass === Book::class;
+        return false;
+//        return $resourceClass === Book::class;
     }
 }
