@@ -19,6 +19,9 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  *     itemOperations={
  *          "get",
  *          "put"
+ *     },
+ *     attributes={
+ *         "access_control"="is_granted('ROLE_USER')"
  *     }
  * )
  * @ORM\Entity
