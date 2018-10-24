@@ -12,6 +12,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiResource(
  *     normalizationContext={"groups"={"Author:write"}},
  *     denormalizationContext={"groups"={"Author:read"}},
+ *     attributes={
+ *         "order"={"name":"ASC"}
+ *     }
  * )
  * @ORM\Entity
  */
@@ -28,7 +31,7 @@ class Author
      * @var string
      * @ORM\Column
      * @ApiProperty(iri="http://schema.org/name")
-     * @Groups({"Book:read", "Book:write"})
+     * @Groups({"Author:read", "Author:write", "Book:read", "Book:write"})
      * @Assert\NotBlank()
      */
     private $name;
