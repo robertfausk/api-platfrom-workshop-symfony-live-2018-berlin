@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
+use App\Controller\RentBook;
 
 /**
  * @ApiResource(
@@ -17,6 +18,7 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  *     denormalizationContext={"groups"={"Book:read"}},
  *     collectionOperations={"get", "post"},
  *     itemOperations={
+ *          "rent"={"method"="GET", "path"="/book/rent/{id}", "controller"=RentBook::class},
  *          "get"={"path"="/myBooks/{id}"},
  *          "put"
  *     },
