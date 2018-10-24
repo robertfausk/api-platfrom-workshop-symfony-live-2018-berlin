@@ -16,7 +16,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            pattern: ^/
+            pattern: ^/narf
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
