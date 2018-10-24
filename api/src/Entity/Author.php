@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
@@ -28,6 +29,7 @@ class Author
      * @ORM\Column
      * @ApiProperty(iri="http://schema.org/name")
      * @Groups({"Book:read", "Book:write"})
+     * @Assert\NotBlank()
      */
     private $name;
 
